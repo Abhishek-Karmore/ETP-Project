@@ -1,0 +1,51 @@
+<div class="container mt-4">
+
+  <h3 class="mb-4">Your Cart</h3>
+
+  <div *ngIf="cartItems.length === 0" class="text-muted">
+    Cart is empty
+  </div>
+
+  <div class="card mb-3" *ngFor="let item of cartItems">
+    <div class="row g-0 align-items-center p-2">
+
+      <div class="col-md-2">
+        <img [src]="item.imageUrl" class="img-fluid rounded">
+      </div>
+
+      <div class="col-md-4">
+        <h6>{{ item.productName }}</h6>
+        <p class="text-success fw-bold">₹ {{ item.price }}</p>
+      </div>
+
+      <!-- QUANTITY -->
+      <div class="col-md-3 d-flex align-items-center">
+        <button class="btn btn-outline-secondary btn-sm" (click)="decrease(item)">−</button>
+        <span class="mx-3 fw-bold">{{ item.quantity }}</span>
+        <button class="btn btn-outline-secondary btn-sm" (click)="increase(item)">+</button>
+      </div>
+
+      <!-- TOTAL -->
+      <div class="col-md-2 fw-bold">
+        ₹ {{ item.total }}
+      </div>
+
+      <!-- REMOVE -->
+      <div class="col-md-1">
+        <button class="btn btn-sm btn-danger" (click)="remove(item)">✕</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAYMENT SECTION -->
+  <div class="text-end mt-4" *ngIf="cartItems.length > 0">
+    <h4>Total: ₹ {{ grandTotal }}</h4>
+
+ <button class="btn btn-success mt-2" (click)="goToPayment()">
+  Proceed to Payment
+</button>
+
+  </div>
+
+</div>

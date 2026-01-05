@@ -1,0 +1,39 @@
+.admin-shell {
+  display: flex;
+  height: 100vh;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: #0b1220;
+  color: white;
+  padding: 20px;
+}
+
+.admin-sidebar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.admin-sidebar a {
+  display: block;
+  padding: 12px;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.admin-sidebar a.active,
+.admin-sidebar a:hover {
+  background: #1f2937;
+  color: white;
+}
+
+.admin-main {
+  flex: 1;
+  background: #f5f6fa;
+  padding: 24px;
+  overflow-y: auto;
+}

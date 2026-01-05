@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h2>Product Management</h2>
+  <button routerLink="/admin/addproducts">Add Product</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Product Name</th>
+      <th>Category</th>
+      <th>Price (₹)</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let p of products; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ p.productName}}</td>
+      <td>{{ p.categoryId }}</td>
+      <td>{{ p.price }}</td>
+      <td>
+        <!-- <button (click)="edit(p.productId)">Edit</button>
+        <button (click)="delete(p.productId)">Delete</button> -->
+        <button (click)="editProduct(p.productId)">Edit</button>
+        <button (click)="deleteProduct(p.productId)">Delete</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

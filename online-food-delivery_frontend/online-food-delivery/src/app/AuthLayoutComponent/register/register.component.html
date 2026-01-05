@@ -1,0 +1,104 @@
+<div class="register-section">
+  <!-- background container -->
+  <div class="container h-100">
+    <div class="row justify-content-center align-items-center h-100">
+
+      <div class="col-lg-7 col-md-9">
+        <div class="card register-card shadow-sm">
+
+          <!-- HEADER WITH LOGO -->
+          <div class="register-header text-center">
+            <a class="logo d-inline-block mb-2" routerLink="/user/home">
+              🍔 <span>Eatify</span>Eats
+            </a>
+            <h3 class="mb-1">Create your account</h3>
+            <p class="mb-0">Join Eatify Eats and start ordering delicious food.</p>
+          </div>
+
+          <!-- FORM -->
+          <div class="card-body p-4">
+            <form #registerForm="ngForm" (ngSubmit)="register()">
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your name"
+                    name="userName"
+                    [(ngModel)]="userName"
+                    required>
+                </div>
+
+                <!-- EMAIL with Gmail-only validation -->
+                <div class="col-md-6 mb-3">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="example@gmail.com"
+                    name="email"
+                    [(ngModel)]="email"
+                    #emailCtrl="ngModel"
+                    required
+                    pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$">
+                  <small class="text-danger" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+                    Please enter a valid Gmail address (must end with @gmail.com).
+                  </small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Create password"
+                    name="password"
+                    [(ngModel)]="password"
+                    #pwdCtrl="ngModel"
+                    required minlength="6">
+                  <small class="text-danger" *ngIf="pwdCtrl.invalid && pwdCtrl.touched">
+                    Minimum 6 characters required.
+                  </small>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label>Confirm Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Confirm password"
+                    name="confirmPassword"
+                    [(ngModel)]="confirmPassword"
+                    #cpwdCtrl="ngModel"
+                    required>
+                  <!-- optional simple template check -->
+                  <small class="text-danger"
+                         *ngIf="cpwdCtrl.touched && confirmPassword !== password">
+                    Passwords do not match.
+                  </small>
+                </div>
+              </div>
+
+              <button
+                class="btn btn-register w-100 mt-3"
+                [disabled]="registerForm.invalid || confirmPassword !== password">
+                Create Account
+              </button>
+            </form>
+
+            <p class="text-center mt-4 mb-0">
+              Already have an account?
+              <span class="login-link" (click)="goToLogin()">Login</span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

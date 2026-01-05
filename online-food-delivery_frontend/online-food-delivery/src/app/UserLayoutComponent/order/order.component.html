@@ -1,0 +1,53 @@
+<div class="container mt-5">
+
+  <h3 class="text-center mb-4 fw-bold">
+    🧾 Your Previous Orders
+  </h3>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="text-center">
+    Loading orders...
+  </div>
+
+  <!-- NO ORDERS -->
+  <div *ngIf="!loading && orders.length === 0" class="text-center text-muted">
+    You have not placed any orders yet
+  </div>
+
+  <!-- LONG BAR ORDERS -->
+  <div *ngIf="orders.length > 0">
+
+    <div
+      class="order-bar mb-3"
+      *ngFor="let order of orders"
+    >
+
+      <!-- IMAGE -->
+      <img
+        [src]="order.product.imageUrl"
+        class="order-img"
+        alt="product"
+      />
+
+      <!-- DETAILS -->
+      <div class="order-details">
+
+        <h5 class="mb-1">
+          {{ order.product.productName }}
+        </h5>
+
+        <div class="text-muted small mb-1">
+          Quantity: {{ order.quantity }}
+        </div>
+
+        <div class="fw-bold text-success">
+          ₹ {{ order.totalAmount }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

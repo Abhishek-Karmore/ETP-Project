@@ -1,0 +1,39 @@
+.navbar {
+  height: 70px;
+}
+
+.search-input {
+  width: 350px;
+  border-radius: 20px;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+.badge {
+  font-size: 12px;
+}
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #dc3545; /* brand color */
+}
+/* CART BADGE STYLE */
+.cart-badge {
+  background-color: #dc3545;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 0 5px;
+  vertical-align: top;
+}

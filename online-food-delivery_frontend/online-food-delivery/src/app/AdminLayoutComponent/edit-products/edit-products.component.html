@@ -1,0 +1,80 @@
+<div class="admin-page">
+  <div class="form-card">
+
+    <!-- HEADER -->
+    <div class="form-header">
+      <h2>Edit Product</h2>
+    </div>
+
+    <!-- BODY -->
+    <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)" class="form-body">
+
+      <!-- PRODUCT NAME -->
+      <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" name="productName" [(ngModel)]="product.productName" required placeholder="e.g. Veg Burger"
+          #productName="ngModel" />
+
+        <small class="error" *ngIf="editForm.submitted && productName.invalid">
+          Product name is required
+        </small>
+      </div>
+
+      <!-- CATEGORY -->
+      <div class="form-group">
+        <label>Category</label>
+
+        <select name="categoryId" [(ngModel)]="product.categoryId" required #category="ngModel">
+          <option *ngFor="let c of categories" [value]="c.categoryId">
+            {{ c.categoryName }}
+          </option>
+        </select>
+
+
+
+        <small class="error" *ngIf="editForm.submitted && category.invalid">
+          Category is required
+        </small>
+      </div>
+
+      <!-- PRICE -->
+      <div class="form-group">
+        <label>Price (₹)</label>
+        <input type="number" name="price" [(ngModel)]="product.price" required min="1" placeholder="e.g. 199"
+          #price="ngModel" />
+
+        <small class="error" *ngIf="editForm.submitted && price.invalid">
+          Valid price is required
+        </small>
+      </div>
+
+      <!-- IMAGE URL -->
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="text" name="imageUrl" [(ngModel)]="product.imageUrl" required placeholder="Paste image URL"
+          #imageUrl="ngModel" />
+
+        <small class="error" *ngIf="editForm.submitted && imageUrl.invalid">
+          Image URL is required
+        </small>
+      </div>
+
+      <!-- IMAGE PREVIEW -->
+      <div *ngIf="product.imageUrl" style="margin-top: 12px;">
+        <img [src]="product.imageUrl" alt="Preview" style="max-width: 100%; border-radius: 10px;" />
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary" [disabled]="editForm.invalid">
+          Update Product
+        </button>
+
+        <button type="button" class="btn-secondary" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

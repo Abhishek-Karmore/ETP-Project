@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand logo" routerLink="/user/home">
+      🍔 <span>Eatify</span>Eats
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- NAV CONTENT -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- LOCATION -->
+      <span class="navbar-text ms-3 d-none d-lg-block">
+        📍 Pune
+      </span>
+
+      <!-- SEARCH -->
+      <form class="d-flex mx-auto d-none d-lg-flex">
+        <input class="form-control search-input" type="search" placeholder="Search for restaurants or dishes">
+      </form>
+
+      <!-- RIGHT MENU -->
+      <ul class="navbar-nav ms-auto align-items-center">
+        <!-- ORDERS (ONLY WHEN LOGGED IN) -->
+        <li class="nav-item me-3" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/order">
+            📦 Orders
+          </a>
+        </li>
+        <!-- CART -->
+        <li class="nav-item me-3">
+          <a class="nav-link" routerLink="/cart">
+            🛒 Cart
+            <span class="badge bg-danger ms-1 cart-badge" *ngIf="cartCount > 0">
+              {{ cartCount }}
+            </span>
+          </a>
+        </li>
+
+        <!-- USER DROPDOWN -->
+        <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            👤 {{ isLoggedIn ? userName : 'Login' }}
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+
+            <li *ngIf="!isLoggedIn">
+              <a class="dropdown-item" routerLink="/login">
+                Login
+              </a>
+            </li>
+
+            <li *ngIf="isLoggedIn">
+              <a class="dropdown-item" (click)="logout()">
+                Logout
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

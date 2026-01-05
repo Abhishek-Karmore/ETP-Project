@@ -1,0 +1,74 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-body">
+  <h2>Add Product</h2>
+  <!-- PRODUCT NAME -->
+  <div class="form-group">
+    <label>Product Name</label>
+    <input type="text"
+           formControlName="product_name"
+           placeholder="e.g. Veg Burger">
+
+    <small class="error" *ngIf="submitted && f.product_name.errors">
+      Product name is required
+    </small>
+  </div>
+
+  <!-- CATEGORY -->
+  <div class="form-group">
+    <label>Category</label>
+
+    <select formControlName="category_id">
+
+      <!-- IMPORTANT -->
+      <option [ngValue]="null">Select category</option>
+
+      <!-- IMPORTANT: correct keys + ngValue -->
+      <option *ngFor="let c of categories"
+              [ngValue]="c.categoryId">
+        {{ c.categoryName }}
+      </option>
+
+    </select>
+
+    <small class="error" *ngIf="submitted && f.category_id.errors">
+      Category is required
+    </small>
+  </div>
+
+  <!-- PRICE -->
+  <div class="form-group">
+    <label>Price (₹)</label>
+    <input type="number"
+           formControlName="price"
+           placeholder="e.g. 199">
+
+    <small class="error" *ngIf="submitted && f.price.errors">
+      Valid price is required
+    </small>
+  </div>
+
+  <!-- IMAGE URL -->
+  <div class="form-group">
+    <label>Image URL</label>
+    <input type="text"
+           formControlName="image_url"
+           placeholder="Paste image URL">
+
+    <small class="error" *ngIf="submitted && f.image_url.errors">
+      Image URL is required
+    </small>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="form-actions">
+    <button type="submit" class="btn-primary">
+      Save Product
+    </button>
+
+    <button type="button"
+            class="btn-secondary"
+            routerLink="/admin/products-list">
+      Cancel
+    </button>
+  </div>
+
+</form>

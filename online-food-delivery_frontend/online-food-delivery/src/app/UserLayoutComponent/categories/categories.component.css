@@ -1,0 +1,31 @@
+.category-card {
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.8s ease forwards;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-card img {
+  max-height: 150px;
+}
+
+/* ENTRY ANIMATION */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

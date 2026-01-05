@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Choose Category</h2>
+
+  <div class="row">
+    <div
+      class="col-md-3 mb-4"
+      *ngFor="let category of categories; let i = index"
+      (click)="goToProducts(category.categoryId)"
+    >
+      <div class="category-card text-center animate-card">
+        <img
+          [src]="category.categoryImage"
+          class="img-fluid"
+          alt="{{ category.categoryName }}"
+        />
+      </div>
+    </div>
+  </div>
+</div>
